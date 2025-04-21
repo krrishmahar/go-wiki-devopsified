@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-wiki
+  namespace: go-wiki
+  labels:
+    app: go-wiki
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: go-wiki
+  template:
+    metadata:
+      labels:
+        app: go-wiki
+    spec:
+      containers:
+        - name: go-wiki
+          image: "krrishmahar/go-wiki:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 8080
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
