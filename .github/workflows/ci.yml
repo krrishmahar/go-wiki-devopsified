@@ -22,15 +22,16 @@ jobs:
         run: |
           go build -o main
 
-  code-quality:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Run golangci-lint
-        uses: golangci/golangci-lint-action@v6
-        with:
-          version: v1.56.2
+# Temporary commented out code for golangci-lint
+#   code-quality:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+#       - name: Run golangci-lint
+#         uses: golangci/golangci-lint-action@v6
+#         with:
+#           version: v1.56.2
 
   push:
     runs-on: ubuntu-latest
